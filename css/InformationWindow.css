@@ -1,0 +1,92 @@
+.informationWindow {
+    position: absolute;
+
+    width: 30%;
+    height: 90%;
+
+    top: 5%;
+    left: 35%;
+
+    display: none;
+
+    border: solid 0.5vmin #FF8800;
+    border-radius: 20px;
+
+    /*background-color: #FFD000;*/
+    background-color: #e5e5e5;
+
+    box-shadow:  0px 0px 20px #000000;
+}
+
+.informationHeader {
+    width: 100%;
+    height: 10%;
+
+    font-family: 'Merriweather';
+    text-align: center;
+    font-size: 6vmin;
+}
+
+.informationContent {
+    width: calc(100% - 20px);
+    height: calc(85% - 20px - 1vmin - 1%);
+
+    background-color: #e5e5e5;
+
+    font-family: 'Merriweather';
+    text-align: justify;
+    font-size: 2vmin;
+
+    overflow-y: scroll;
+    padding: 10px;
+}
+
+.informationContent h2 {
+    text-align: center;
+    margin-bottom: 2vmin;
+}
+
+.informationContent h3 {
+    text-align: center;
+}
+
+.informationFooter {
+    width: 100%;
+    height: 5%;
+}
+
+#tutorialWindow {
+    display: block;
+}
+
+.informationFooter .close {
+    width: 50%;
+    height: 80%;
+
+    position: relative;
+    right: 10%;
+    top: 10%;
+    left: 25%;
+    right: 25%;
+}
+
+.colorInBox {
+    width: 2vmin;
+    height: 2vmin;
+
+    border: solid 0.25vmin black;
+
+    float: left;
+}
+
+#defaultColor {
+    background-color: #FFA200;
+}
+
+#readColor {
+    background-color: #FF7B00;
+}
+
+#modifyColor {
+    background-color: #FFD000;
+}

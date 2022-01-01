@@ -1,0 +1,553 @@
+<!DOCTYPE html>   
+<html lang="pl">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="css/Main.css">
+    <link rel="icon" href="resources/icon.svg">
+    <title>Sorting Algorithm</title>
+</head>
+<body>
+    <nav>
+        <div id="controlPanel">
+            <button id="startSortingArray"> Start Sorting </button>
+            <button id="randomizeArray"> Randomize Array</button>
+            <button id="stopSortingArray"> Stop Sorting </button>
+        </div>
+        <div class="verticalLine"> <div class="innerBorder"> </div> </div>
+        <div id="settingsPanel">
+            <div class="sliderDescription"> Array Size </div>
+            <input type="range" min="2" max="200" class="slider" id="arraySize">
+            <div class="sliderDescription"> Sorting Speed </div>
+            <input type="range" min="0" max="500" class="slider" id="sortingSpeed">
+        </div>
+        <div class="verticalLine"> <div class="innerBorder"> </div> </div>
+        <div id="optionsPanel">
+            <div class = "dropdown" id = "algorithmList">
+                <button class = "dropdownButton"> Sorting Algorithms </button>
+                <div class = "dropdown-content">
+                    <div class="text" id="bubbleSort"> Bubble Sort </div> <div class="info" id="bubbleSortInfo"> ? </div>
+                    <div class="text" id="selectionSort"> Selection Sort </div> <div class="info" id="selectionSortInfo"> ? </div>
+                    <div class="text" id="insertionSort"> Insertion Sort </div> <div class = "info" id="insertionSortInfo"> ? </div>
+                    <div class="text" id="shellSort"> Shell Sort </div> <div class = "info" id="shellSortInfo"> ? </div>
+                    <div class="text" id="quickSort"> Quick Sort </div> <div class = "info" id="quickSortInfo"> ? </div>
+                    <div class="text" id="mergeSort"> Merge Sort </div> <div class = "info" id="mergeSortInfo"> ? </div>
+                    <div class="text" id="bongoSort"> Bogo Sort </div> <div class = "info" id="bongoSortInfo"> ? </div>
+                </div>
+            </div> <br> <br>
+            <div id="chosenAlgorithm"> Algorithm: Bubble Sort</div>
+            <div id="arrayElementValue"> Element Value: None</div>
+        </div>
+    </nav>
+
+    <div class="horizontalLine"> <div class="innerBorder"> </div> </div>
+
+    <main>
+        <canvas id="canvas" width="1920" height="1080">
+
+        </canvas>
+    </main>
+
+    <div class="horizontalLine"> <div class="innerBorder"> </div> </div>
+
+    <footer>
+        <div id="soundPanel">
+            <div id="sound"> 
+                <!--Sound:
+                <input type="checkbox">-->
+                Version: Alpha 1.0.0
+            </div>
+        </div>
+        <div id="authorPanel">
+            <div id="author"> 
+                &#169; 2021-2022 Rafał Walkowiak 
+                <a href="https://github.com/Raadwal/"> <img src="resources/githubMark.png" alt="github"> </a>
+            </div>
+            
+        </div>
+        <div id="timePanel">
+            <div id="time"></div>
+        </div>
+    </footer>
+
+    <!-- ============================== Tutorial ============================== -->
+    <div class="informationWindow" id="tutorialWindow">
+        
+        <div class="informationHeader">
+            Welcome!
+        </div>
+        <div class="horizontalLine"> <div class="innerBorder"> </div> </div>
+        <div class="informationContent">    
+            <article>
+                <h2> Basics Information </h2>
+                <section>
+                    <h3> Purpose of this website </h3>
+                    The website was created to visualize how basic sorting algorithms works.
+                    Curently added algorithms:
+                    <ul class="tab">
+                        <li>Bubble Sort (selected as default)</li>
+                        <li>Selection Sort</li>
+                        <li>Insertion Sort</li>
+                        <li>Shell Sort</li>
+                        <li>Quick Sort</li>
+                        <li>Merge Sort</li>
+                        <li>Bogo Sort</li>
+                    </ul>
+                    More algorithms will be added in the future.
+                </section>
+                <section>
+                    <h3> Basics Controls </h3>
+                    <ul class="tab">
+                        <li> Start Sorting - starts sorting animation </li>
+                        <li> Randomize Array - generates new array </li>
+                        <li> Stop Sorting - stops sorting animation </li>
+                        <li> 
+                            Array Size - shows actual array size
+                            <ul class="tab2">
+                                <li>Minimum size: 2</li>
+                                <li>Maximum size: 200</li>
+                            </ul>
+                        </li>
+                        <li> 
+                            Sorting Speed - shows delay after any operation at array: maximum 500ms
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h3> Array operations </h3>
+                    <ul class="tab">
+                        <li>
+                            <div class="colorInBox" id="defaultColor">  </div>
+                            -Default color of the element. Sorting algorithm is not using this element.
+                        </li>
+                        <li>
+                            <div class="colorInBox" id="readColor">  </div>
+                            -Sorting algorithm is reading current value of the element
+                        </li>
+                        <li>
+                            <div class="colorInBox" id="modifyColor">  </div>
+                            -Sorting algorithm is modyfing current value of the element
+                        </li>
+                    </ul>
+                </section>
+                <section>
+                    <h3> Additional Information </h3>
+                    This is the <b> Alpha 1.0.0 </b> version of the website. It will be developed in the future.
+                </section>
+                <section>
+                    <h3> References </h3>
+                    <ul class="tab">
+                        <li> <a href="https://www.geeksforgeeks.org/sorting-algorithms/"> https://www.geeksforgeeks.org/sorting-algorithms/ </a> </li>
+                        <li> <a href="https://www.programiz.com/dsa">https://www.programiz.com/dsa </a></li>
+                        <li> <a href="https://en.wikipedia.org/wiki/Main_Page"> https://en.wikipedia.org/wiki/Main_Page </a> </li>
+                    </ul>
+                </section>
+            </article>
+        </div>
+        <div class="horizontalLine"> <div class="innerBorder"> </div> </div>
+        <div class="informationFooter">
+            <button class="close" id="closeTutorialWindow"> Close </button>
+        </div>
+       
+    </div>
+
+    <!-- ============================== Information about Bubble Sort ============================== -->
+    <div class="informationWindow" id="bubbleSortInformation">
+        <div class="informationHeader">
+            Bubble Sort
+        </div>
+        <div class="horizontalLine"> <div class="innerBorder"> </div> </div>
+        <div class="informationContent">
+            <article>
+                <h2>Basics Information</h2>
+                <section>
+                    <h3>Brief Description</h3>
+                    <span> <b>Bubble sort</b> (sometimes referred to as <b>sinking sort</b>) is one of the simplest sorting algorithm that 
+                    repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order. 
+                    The pass thorugh the list is repeated until the lsit is sorted. </span>
+                </section>
+                <section>
+                    <h3>How the code looks like?</h3>
+                    <span> Bubble Sort implementation in python: <br> </span>
+                    <code>
+                        <span> def bubbleSort(array): </span> <br>
+                            <span class="tab"> n = len(array) </span> <br>
+                            <span class="tab"> for i in range(n - 1): </span> <br>
+                            <span class="tab"> <span class="tab"> for j in range(0, n - i - 1): </span> </span> <br>
+                            <span class="tab"> <span class="tab"> <span class="tab"> if array[j] > array[j + 1]: </span> </span> </span> <br>
+                            <span class="tab"> <span class="tab"> <span class="tab"> <span class="tab"> swap(array[j], array[j + 1]) </span> </span> </span> </span> <br>
+                    </code>
+                </section>
+                <section>
+                    <h3>Is it efficient?</h3>
+                    <table>
+                        <thead>
+                            <tr> <td>  </td> <td> Time Complexity </td> <td> Memory Complexity </td> </tr>
+                        </thead>
+                        <tbody>
+                            <tr> <td> Best </td> <td> O(n) </td> <td> O(1) </td> </tr>
+                            <tr> <td> Avarage </td> <td> O(n<sup>2</sup>) </td> <td> O(1) </td> </tr>
+                            <tr> <td> Worst </td> <td> O(n<sup>2</sup>) </td> <td> O(1) </td> </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </article>
+        </div>
+        <div class="horizontalLine"> <div class="innerBorder"> </div> </div>
+        <div class ="informationFooter">
+            <button class="close" id="closeBubbleSortInformation"> Close </button>
+        </div>
+    </div>
+
+    <!-- ============================== Information about Selection Sort ============================== -->
+    <div class="informationWindow" id="selectionSortInformation">
+        <div class="informationHeader">
+            Selection Sort
+        </div>
+        <div class="horizontalLine"> <div class="innerBorder"> </div> </div>
+        <div class="informationContent">
+            <article>
+                <h2>Basics Information</h2>
+                <section>
+                    <h3>Brief Description</h3>
+                    <span> <b>Selection sort</b> is an in-place comparison sorting algorithm.  
+                        Selection sort is noted for its simplicity and has performance advantages over more complicated algorithms in certain situations, particularly where auxiliary memory is limited. </span>
+                </section>
+                <section>
+                    <h3>How the code looks like?</h3>
+                    <span> Selection Sort implementation in python: <br> </span>
+                    <code>
+                        <span> def selectionSort(array): </span> <br>
+                        <span class="tab"> n = len(array) </span> <br>
+                        <span class="tab"> for step in range(size): </span> <br>
+                        <span class="tab"> <span class="tab"> minIndex = step </span> </span> <br>
+                        <span class="tab"> <span class="tab"> for i in range(step + 1, size): </span> </span> <br>
+                        <span class="tab"> <span class="tab"> <span class="tab"> if array[i] &lt; array[minIndex]: </span> </span> </span> <br>
+                        <span class="tab"> <span class="tab"> <span class="tab"> <span class="tab">minIndex = i </span> </span> </span> </span> <br>
+                        <span class="tab"> <span class="tab"> swap(array[step], array[minIndex]) </span> </span> <br>
+                    </code>
+                </section>
+                <section>
+                    <h3>Is it efficient?</h3>
+                    <table>
+                        <thead>
+                            <tr> <td>  </td> <td> Time Complexity </td> <td> Memory Complexity </td> </tr>
+                        </thead>
+                        <tbody>
+                            <tr> <td> Best </td> <td> O(n<sup>2</sup>) </td> <td> O(1) </td> </tr>
+                            <tr> <td> Avarage </td> <td> O(n<sup>2</sup>) </td> <td> O(1) </td> </tr>
+                            <tr> <td> Worst </td> <td> O(n<sup>2</sup>) </td> <td> O(1) </td> </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </article>
+        </div>
+        <div class="horizontalLine"> <div class="innerBorder"> </div> </div>
+        <div class ="informationFooter">
+            <button class="close" id="closeSelectionSortInformation"> Close </button>
+        </div>
+    </div>
+
+    <!-- ============================== Information about Insertion Sort ============================== -->
+    <div class="informationWindow" id="insertionSortInformation">
+        <div class="informationHeader">
+            Insertion Sort
+        </div>
+        <div class="horizontalLine"> <div class="innerBorder"> </div> </div>
+        <div class="informationContent">
+            <article>
+                <h2>Basics Information</h2>
+                <section>
+                    <h3>Brief Description</h3>
+                    <span> 
+                        <b>Insertion sort</b> is a simple sorting algorithm that builds the final sorted array (or list) one item at a time.
+                        It is much less efficient on large lists than more advanced algorithms such as quicksort, heapsort, or merge sort. 
+                    </span>
+                </section>
+                <section>
+                    <h3>How the code looks like?</h3>
+                    <span> Insertion Sort implementation in python: <br> </span>
+                    <code>
+                        <span> def insertionSort(array): </span> <br>
+                        <span class="tab"> for step in range(1, len(array)): </span> <br>
+                        <span class="tab2"> key = array[step] </span> <br>
+                        <span class="tab2"> j = step - 1 </span> <br>
+                        <span class="tab2"> while(j >= 0 and key &; array[j]): </span> <br>
+                        <span class="tab3"> array[j + 1] = array[j] </span> <br>
+                        <span class="tab3"> j = j - 1 </span> <br>
+                        <span class="tab2"> array[j + 1] = key </span> <br>
+                    </code>
+                </section>
+                <section>
+                    <h3>Is it efficient?</h3>
+                    <table>
+                        <thead>
+                            <tr> <td>  </td> <td> Time Complexity </td> <td> Memory Complexity </td> </tr>
+                        </thead>
+                        <tbody>
+                            <tr> <td> Best </td> <td> O(n) </td> <td> O(1) </td> </tr>
+                            <tr> <td> Avarage </td> <td> O(n<sup>2</sup>) </td> <td> O(1) </td> </tr>
+                            <tr> <td> Worst </td> <td> O(n<sup>2</sup>) </td> <td> O(1) </td> </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </article>
+        </div>
+        <div class="horizontalLine"> <div class="innerBorder"> </div> </div>
+        <div class ="informationFooter">
+            <button class="close" id="closeInsertionSortInformation"> Close </button>
+        </div>
+    </div>
+
+    <!-- ============================== Information about Shell Sort ============================== -->
+    <div class="informationWindow" id="shellSortInformation">
+        <div class="informationHeader">
+            Shell Sort
+        </div>
+        <div class="horizontalLine"> <div class="innerBorder"> </div> </div>
+        <div class="informationContent">
+            <article>
+                <h2>Basics Information</h2>
+                <section>
+                    <h3>Brief Description</h3>
+                    <span> 
+                        <b>Shell sort</b> is an in-place comparison sort. It can be seen as either a generalization of sorting by exchange (bubble sort) or sorting by insertion (insertion sort).
+                        The method starts by sorting pairs of elements far apart from each other, then progressively reducing the gap between elements to be compared.
+                        By starting with far apart elements, it can move some out-of-place elements into position faster than a simple nearest neighbor exchange.
+                        The running time of Shellsort is heavily dependent on the gap sequence it uses. For many practical variants, determining their time complexity remains an open problem. 
+                    </span>
+                </section>
+                <section>
+                    <h3>How the code looks like?</h3>
+                    <span> Shell Sort implementation in python: <br> </span>
+                    <code>
+                        <span>def shellSort(array): </span> <br>
+                        <span class="tab"> n = len(array) </span> <br>
+                        <span class="tab"> interval // 2 </span> <br>
+                        <span class="tab"> while interval > 0 </span> <br>
+                        <span class="tab2"> for i in range(interval, n) </span> <br>
+                        <span class="tab3"> temp = array[i] </span> <br>
+                        <span class="tab3"> j = i </span> <br>
+                        <span class="tab3"> while j >= interval and array[j - interval] > temp: </span> <br>
+                        <span class="tab4"> array[j] = array[j - interval] </span> <br>
+                        <span class="tab4"> j = j - interval </span> <br>
+                        <span class="tab3"> array[j] = tmp </span> <br>
+                        <span class="tab2"> interval = interval // 2 </span> <br>
+                    </code>
+                </section>
+                <section>
+                    <h3>Is it efficient?</h3>
+                    <table>
+                        <thead>
+                            <tr> <td>  </td> <td> Time Complexity </td> <td> Memory Complexity </td> </tr>
+                        </thead>
+                        <tbody>
+                            <tr> <td> Best </td> <td> O(n log n) </td> <td> O(1) </td> </tr>
+                            <tr> <td> Avarage </td> <td> O(n log n) </td> <td> O(1) </td> </tr>
+                            <tr> <td> Worst </td> <td> O(n<sup>2</sup>) </td> <td> O(1) </td> </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </article>
+        </div>
+        <div class="horizontalLine"> <div class="innerBorder"> </div> </div>
+        <div class ="informationFooter">
+            <button class="close" id="closeShellSortInformation"> Close </button>
+        </div>
+    </div>
+
+    <!-- ============================== Information about Quick Sort ============================== -->
+    <div class="informationWindow" id="quickSortInformation">
+        <div class="informationHeader">
+            Quick Sort
+        </div>
+        <div class="horizontalLine"> <div class="innerBorder"> </div> </div>
+        <div class="informationContent">
+            <article>
+                <h2>Basics Information</h2>
+                <section>
+                    <h3>Brief Description</h3>
+                    <span> 
+                        <b>Quick sort</b> Quicksort is a divide-and-conquer algorithm. It works by selecting a 'pivot' element from the array and partitioning 
+                        the other elements into two sub-arrays, according to whether they are less than or greater than the pivot.
+                        For this reason, it is sometimes called partition-exchange sort.
+                        The sub-arrays are then sorted recursively. This can be done in-place, requiring small additional amounts of memory to perform the sorting.
+                    </span>
+                </section>
+                <section>
+                    <h3>How the code looks like?</h3>
+                    <span> Quick Sort implementation in python: <br> </span>
+                    <code>
+                        <span> def partition(arrray, low, high): </span> <br>
+                        <span class="tab"> pivot = array[high] </span> <br>
+                        <span class="tab"> i = low - 1 </span> <br>
+                        <span class="tab"> for j in range(low, high): </span> <br>
+                        <span class="tab2"> if array[j] &lt;= pivot: </span> <br>
+                        <span class="tab3"> i = i + 1 </span> <br>
+                        <span class="tab3"> swap(array[i], array[j]) </span> <br>
+                        <span class="tab"> swap(array[i + 1], array[high]) </span> <br>
+                        <span class="tab"> return i + 1 </span> <br> <br>
+
+                        <span> def quickSort(array, low, high): </span> <br>
+                        <span class="tab"> if low &lt; high: </span> <br>
+                        <span class="tab2"> pi = partition(array, low, high) </span> <br>
+                        <span class="tab2"> quickSort(array, low, pi - 1) </span> <br>
+                        <span class="tab2"> quickSort(array, pi + 1, high) </span> <br>
+                    </code>
+                </section>
+                <section>
+                    <h3>Is it efficient?</h3>
+                    <table>
+                        <thead>
+                            <tr> <td>  </td> <td> Time Complexity </td> <td> Memory Complexity </td> </tr>
+                        </thead>
+                        <tbody>
+                            <tr> <td> Best </td> <td> O(n log n) </td> <td> O(log n) </td> </tr>
+                            <tr> <td> Avarage </td> <td> O(n log n) </td> <td> O(log n) </td> </tr>
+                            <tr> <td> Worst </td> <td> O(n<sup>2</sup>) </td> <td> O(log n) </td> </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </article>
+        </div>
+        <div class="horizontalLine"> <div class="innerBorder"> </div> </div>
+        <div class ="informationFooter">
+            <button class="close" id="closeQuickSortInformation"> Close </button>
+        </div>
+    </div>
+
+    <!-- ============================== Information about Merge Sort ============================== -->
+    <div class="informationWindow" id="mergeSortInformation">
+        <div class="informationHeader">
+            Merge Sort
+        </div>
+        <div class="horizontalLine"> <div class="innerBorder"> </div> </div>
+        <div class="informationContent">
+            <article>
+                <h2>Basics Information</h2>
+                <section>
+                    <h3>Brief Description</h3>
+                    <span> 
+                        <b>Merge sort </b>  is an efficient, general-purpose, and comparison-based sorting algorithm.
+                        Most implementations produce a stable sort, which means that the order of equal elements is the same in the input and output.
+                        Merge sort is a divide and conquer algorithm.
+                    </span>
+                </section>
+                <section>
+                    <h3>How the code looks like?</h3>
+                    <span> Merge Sort implementation in python: <br> </span>
+                    <code>
+                        <span> def mergeSort(array): </span> <br>
+                        <span class="tab"> if len(array) > 1: </span> <br>
+                        <span class="tab2"> r = len(array) // 2 </span> <br>
+                        <span class="tab2"> L = array[:r] </span> <br>
+                        <span class="tab2"> M = array[r:] </span> <br>
+                        <span class="tab2"> mergeSort(L) </span> <br>
+                        <span class="tab2"> mergeSort(M) </span> <br>
+                        <span class="tab2"> i = j = k = 0 </span> <br>
+                        <span class="tab2"> while i &lt; len(L) and j &lt; len(R) </span> <br>
+                        <span class="tab3"> if L[i] &lt; M[j]: </span> <br>
+                        <span class="tab4"> array[k] = L[i] </span> <br>
+                        <span class="tab4"> i += 1 </span> <br>
+                        <span class="tab3"> else: </span> <br>
+                        <span class="tab4"> array[k] = M[j] </span> <br>
+                        <span class="tab4"> j += 1 </span> <br>
+                        <span class="tab3"> k += 1 </span> <br>
+                        <span class="tab2"> while i &lt; len(L): </span> <br>
+                        <span class="tab3"> array[k] = L[i] </span> <br>
+                        <span class="tab3"> i += 1 </span> <br>
+                        <span class="tab3"> k += 1 </span> <br>
+                        <span class="tab2"> while j &lt; len(M): </span> <br>
+                        <span class="tab3"> array[k] = M[j] </span> <br>
+                        <span class="tab3"> j += 1 </span> <br>
+                        <span class="tab3"> k += 1 </span> <br>
+                    </code>
+                </section>
+                <section>
+                    <h3>Is it efficient?</h3>
+                    <table>
+                        <thead>
+                            <tr> <td>  </td> <td> Time Complexity </td> <td> Memory Complexity </td> </tr>
+                        </thead>
+                        <tbody>
+                            <tr> <td> Best </td> <td> O(n log n) </td> <td> O(n) </td> </tr>
+                            <tr> <td> Avarage </td> <td> O(n log n) </td> <td> O(n) </td> </tr>
+                            <tr> <td> Worst </td> <td> O(n log n) </td> <td> O(n) </td> </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </article>
+        </div>
+        <div class="horizontalLine"> <div class="innerBorder"> </div> </div>
+        <div class ="informationFooter">
+            <button class="close" id="closeMergeSortInformation"> Close </button>
+        </div>
+    </div>
+
+    <!-- ============================== Information about Bogo Sort ============================== -->
+    <div class="informationWindow" id="bongoSortInformation">
+        <div class="informationHeader">
+            Bogo Sort
+        </div>
+        <div class="horizontalLine"> <div class="innerBorder"> </div> </div>
+        <div class="informationContent">
+            <article>
+                <h2>Basics Information</h2>
+                <section>
+                    <h3>Brief Description</h3>
+                    <span> 
+                        <b>Bogo sort</b> (also known as <b>permutation sort</b>, <b>stupid sort</b>, or <b>slow sort</b>) 
+                        is a highly inefficient sorting algorithm based on the generate and test paradigm. 
+                        The function successively generates permutations of its input until it finds one that is sorted. 
+                        It is not useful for sorting, but may be used for educational purposes, to contrast it with more efficient algorithms. 
+                    </span>
+                </section>
+                <section>
+                    <h3>How the code looks like?</h3>
+                    <span> Bogo Sort implementation in python: <br> </span>
+                    <code>
+                        <span> def bogoSort(array): </span> <br>
+                        <span class="tab"> while(!is_sorted(array)): </span> <br>
+                        <span class="tab2"> shuffle(array) </span> <br> <br>
+
+                        <span> def is_sorted(array): </span> <br>
+                        <span class="tab"> for i in range(0, len(array) - 1): </span> <br>
+                        <span class="tab2"> if a[i] > a[i + 1]: </span> <br>
+                        <span class="tab3"> return False </span> <br>
+                        <span class="tab"> return True </span> <br> <br>
+
+                        <span> def shuffle(array): </span> <br>
+                        <span class="tab"> n = len(array) </span> <br>
+                        <span class="tab"> for i in range(0, n): </span> <br>
+                        <span class="tab2"> r = random.randint(0, n - 1) </span> <br>
+                        <span class="tab2"> swap(a[i], a[r]) </span> <br>
+                    </code>
+                </section>
+                <section>
+                    <h3>Is it efficient?</h3>
+                    <table>
+                        <thead>
+                            <tr> <td>  </td> <td> Time Complexity </td> <td> Memory Complexity </td> </tr>
+                        </thead>
+                        <tbody>
+                            <tr> <td> Best </td> <td> O(n) </td> <td> O(1) </td> </tr>
+                            <tr> <td> Avarage </td> <td> O((n + 1)!) </td> <td> O(1) </td> </tr>
+                            <tr> <td> Worst </td> <td> Unbounded  </td> <td> O(1) </td> </tr>
+                        </tbody>
+                    </table>
+                </section>
+            </article>
+        </div>
+        <div class="horizontalLine"> <div class="innerBorder"> </div> </div>
+        <div class ="informationFooter">
+            <button class="close" id="closeBongoSortInformation"> Close </button>
+        </div>
+    </div>
+
+    <script src="js/Element.js"> </script>
+    <script src="js/ElementArray.js"> </script>
+    <script src="js/SortingAlgorithms.js"> </script>
+    <script src='js/Main.js'> </script>
+    <script src='js/Time.js'> </script>
+    <script src='js/Tutorial.js'> </script>
+</body>
+</html>

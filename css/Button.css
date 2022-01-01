@@ -1,0 +1,35 @@
+button {
+    -webkit-appearance: none;
+    appearance: none;
+
+    width: 60%;
+    height: 20%;
+
+    font-family: "Inconsolata";
+    font-size: 20px;
+    font-size: 2vmin;
+
+    background-color: #e5e5e5;
+
+    opacity: 80%;
+    
+    border: solid 2px #FFA200;
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    -webkit-transition: 1s;
+    transition: 1s;
+}
+
+button:hover {
+    background-color: #FFD000;
+    box-shadow: inset 0 0 20px #FFA200, 0 0 10px #FFA200;
+
+    opacity: 100%;
+}
+
+button:active {
+    background-color: #FFA200;
+    transition: none;
+}

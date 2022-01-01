@@ -1,0 +1,54 @@
+.sliderDescription {
+    font-family: "Inconsolata";
+    font-size: 20px;
+    font-size: 2vmin;
+}
+
+.slider {
+    -webkit-appearance: none;
+    appearance: none;
+
+    width: 80%;
+    height: 3vmin;
+
+    background-color: #e5e5e5;
+
+    outline: none;
+    opacity: 80%;
+
+    -webkit-transition: 1s;
+    transition: 1s;
+
+    border: solid 2px #FFA200;
+    border-radius: 15px;
+}
+
+.slider:hover {
+    box-shadow: inset 0 0 20px #FFA200, 0 0 10px #FFA200;
+    opacity: 100%;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 3vmin;
+    height: 3vmin;
+    background: #FFA200; 
+    cursor: pointer;
+
+    border: 0px;
+    border-radius: 10px;
+}
+
+.slider::-moz-range-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 3vmin;
+    height: 3vmin; 
+    background: #FFA200;
+    cursor: pointer;
+
+    border: 0px;
+    border-radius: 10px;
+}
+ 

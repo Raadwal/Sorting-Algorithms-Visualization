@@ -1,0 +1,63 @@
+#arrayElementValue {
+    font-family: "Inconsolata";
+    font-size: 20px;
+    font-size: 2.5vmin;
+
+    margin: 2vmin;
+}
+
+#chosenAlgorithm {
+    font-family: "Inconsolata";
+    font-size: 20px;
+    font-size: 2.5vmin;
+
+    margin: 2vmin;
+}
+
+#author {
+    font-family: "Inconsolata";
+    font-size: 20px;
+    font-size: 2vmin;
+}
+
+#time {
+    font-family: "Inconsolata";
+    font-size: 20px;
+    font-size: 2vmin
+}
+
+.tab {
+    margin-left: 2vmin;
+}
+
+.tab2 {
+    margin-left: 4vmin;
+}
+
+.tab3 {
+    margin-left: 6vmin;
+}
+
+.tab4 {
+    margin-left: 8vmin;
+}
+
+code {
+    font-family: 'Source Code Pro', monospace;
+    font-size: 10px;
+    font-size: 2vmin;
+
+    text-align: left;
+}
+
+section {
+    margin-bottom: 2vmin;
+}
+
+section table {
+    text-align: center;
+}
+
+section table td {
+    padding: 0.5vmin;
+}
